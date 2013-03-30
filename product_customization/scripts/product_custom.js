@@ -24,7 +24,9 @@ window.setTimeout(function () {
 			  e.preventDefault();
 			  var title = $(this).attr("name");
 			  //alert(title);
-			  var mnimg = $(this).attr("src");
+			  
+			  var mnimg_o = $(this).attr("src");
+			  var mnimg = mnimg_o.replace("W70-H75-", "");
 			  //alert(mnimg);
 			  if($(".back_stripe").css('display') == "block"){
 			  	imgmain.src= mnimg;
@@ -88,9 +90,17 @@ window.setTimeout(function () {
 		
 		$(".add_reflective_stripes .zform_select").change(function () {
 			var dd_val = "";
+			$(".add_reflective_stripes .pogType_select").show();
 			$(".add_reflective_stripes .zform_select option:selected").each(function () {
 				//strp += $(this).attr("data-thumbnail");
 				dd_val += $(this).attr("id");
+				$(".custom_reflective_strp ul li:visible").each(function (){
+					var strp_stl_up = $(this).attr("id");
+					//alert(dd_val+"_"+strp_stl_up);
+					$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
+					$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
+					$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp_stl_up +".png'>");
+				});
 			});
 		});
 		
@@ -117,18 +127,21 @@ window.setTimeout(function () {
 		var strp = "";
 		$(".add_reflective_stripes .pogType_select select option:selected").each(function () {
 		strp += $(this).val();
+		//alert(strp);
 		});
+		var str_pos = $(".add_reflective_stripes .pogType_select select option:selected").val();
+		var str_pos_txt = $(".add_reflective_stripes .pogType_select select option:selected").text();
 		var dd_val = $(".add_reflective_stripes .zform_select option:selected").attr("id");
 		$(".selected_options").css("display","block");
-		$(".custom_reflective_strp ul li#"+ strp +"_f").append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_f.png'>");
-		$(".custom_reflective_strp ul li#"+ strp +"_b").append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_b.png'>");
+		$(".custom_reflective_strp ul li#ref"+ strp +"_f").append("<img alt='' src='product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_f.png'>");
+		$(".custom_reflective_strp ul li#ref"+ strp +"_b").append("<img alt='' src='product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_b.png'>");
 		$(".custom_reflective_strp ul li#stripnone").css("display","none");
-		if ( $(".custom_stripes_positon option:selected").val() == strp ) {
-			var sel_opt = $(".custom_stripes_positon option:selected").text();
-			var sel_opt_val = $(".custom_stripes_positon option:selected").val();
-			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span>" + sel_opt +"</span><small title='"+ sel_opt_val +"' name='" + sel_opt +"'>X</small></p>");
+		if ( $(".add_reflective_stripes .pogType_select select option:selected").val() == str_pos ) {
+			var sel_opt = $(".add_reflective_stripes .zform_select option:selected").text();
+			var sel_opt_val = $(".add_reflective_stripes .zform_select option:selected").val();
+			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span><b>Position :</b> " + str_pos_txt +"</span><span class='strp_style_select'><b>Style :</b> " + sel_opt +"</span><small title='"+ str_pos +"' name='" + str_pos_txt +"'>X</small></p>");
 			$(".selected_options_list span#sel_opt" + sel_opt_val).html(sel_opt);
-			$(".custom_stripes_positon option:selected").remove();
+			$(".add_reflective_stripes .pogType_select select option:selected").remove();
 		}
 		var current_price = $(".custom_price span").text();
 		var stripes_price=parseInt(current_price) + 2;
@@ -138,10 +151,10 @@ window.setTimeout(function () {
 			var ref = "";
 			ref = $(this).attr("title");
 			var sel_stripe = $(this).attr("name");
-			$(".custom_reflective_strp ul li#"+ ref +"_f img").remove();
-			$(".custom_reflective_strp ul li#"+ ref +"_b img").remove();
+			$(".custom_reflective_strp ul li#ref"+ ref +"_f img").remove();
+			$(".custom_reflective_strp ul li#ref"+ ref +"_b img").remove();
 			$(this).parent().remove();
-			$(".custom_stripes_positon optgroup").append("<option value='"+ ref +"'>"+ sel_stripe +"</option>");
+			$(".add_reflective_stripes .pogType_select select").append("<option value='"+ ref +"'>"+ sel_stripe +"</option>");
 			var current_price = $(".custom_price span").text();
 			var updaterefprice = parseInt(current_price)-2;
 			$(".custom_price span").html(updaterefprice);
@@ -260,7 +273,7 @@ window.setTimeout(function () {
 	// Embroidered Text
 	
 	//Dropdown plugin data
-			/*var ddData = [
+			var ddData = [
 				{
 					text: 'BL Black',
 					value: "50064-BL",
@@ -295,7 +308,7 @@ window.setTimeout(function () {
 			$('#custom_embroid_color').ddslick({
 				data: ddData,
 				selectText: "Select your desired Color"
-			});*/
+			});
 			$(".custom_embroid_positon").change(function () {
 				var embroid = "";
 				$(".custom_embroid_positon option:selected").each(function () {

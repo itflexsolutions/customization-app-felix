@@ -805,18 +805,18 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 				<img src='blank.gif' class='prodBigImage' data-bind='var: product(zoovy:prod_image1); format:imageURL;'  width="500" height="500" alt="" title="" name="imgmain" />
                 <div class="custom_reflective_strp">
                 	<ul class="front_stripe">
-                    	<li id="plc_f"></li>
-                        <li id="blc_f"></li>
-                        <li id="plk_f"></li>
-                        <li id="blt_f"></li>
-						<li id="bsf_f"></li>
+                    	<li id="ref0B_f"></li>
+                        <li id="ref0A_f"></li>
+                        <li id="ref09_f"></li>
+                        <li id="ref08_f"></li>
+						<li id="ref05_f"></li>
                     </ul>
 					<ul class="back_stripe">
-                    	<li id="plc_b"></li>
-                        <li id="blc_b"></li>
-                        <li id="plk_b"></li>
-                        <li id="blt_b"></li>
-						<li id="bsf_b"></li>
+                    	<li id="ref0B_b"></li>
+                        <li id="ref0A_b"></li>
+                        <li id="ref09_b"></li>
+                        <li id="ref08_b"></li>
+						<li id="ref05_b"></li>
                     </ul>
                 </div>
 				<div class="custom_logo">
@@ -829,10 +829,10 @@ It's done this way because ID's hard coded into template are bad mojo (templates
                         <li id="l_bbc"></li>
                     </ul>
 				</div>
-                <!--<div class="custom_image_rotate">
+                <div class="custom_image_rotate" style="visibility:hidden;">
                     <button name="clb6rb_b" id="custom_back">Back</button>
                     <button name="clb6rb" id="custom_front">Front</button>
-                </div>-->
+                </div>
             </div>
             <div class="custom_other_images">
             	<ul data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='prodThumbs'>
@@ -856,6 +856,12 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 				<h3>Reflective Striping</h3>
 				<div class="add_reflective_stripes">
 					<div data-bind='var: product(pid); format:custom_sog_reflective; extension:store_product;' class='borderNone'></div>
+					<div class="selected_options">
+							<label>Selected Position </label>
+							<div class="selected_options_list">
+							
+							</div>
+						</div>
 				</div>
 				<h3>Logo</h3>
 				<div class="add_Logo">
