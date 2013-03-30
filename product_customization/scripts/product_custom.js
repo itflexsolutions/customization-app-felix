@@ -1,9 +1,9 @@
-	// Front and Back
-	
+window.setTimeout(function () {
+// Front and Back
 		$("#custom_back").unbind('click').click(function(e) {
 			  e.preventDefault();
 			  var title1 = $(this).attr("name");
-			  imgmain.src="product_customization/images/products/" + title1 + ".jpg";
+			  imgmain.src=mnimg;
 			  $(".front_stripe").css("display","none");		
 			  $(".back_stripe").css("display","block");	
 			   $(".front_logo").css("display","none");		
@@ -12,7 +12,7 @@
         $("#custom_front").unbind('click').click(function(e) {
 			  e.preventDefault();
 			  var title1 = $(this).attr("name");
-			  imgmain.src="product_customization/images/products/" + title1 + ".jpg";
+			  imgmain.src=mnimg;
 			  $(".back_stripe").css("display","none");
 			  $(".front_stripe").css("display","block");
 			  $(".back_logo").css("display","none");		
@@ -20,23 +20,22 @@
 		});
 		
 	// Color and Image
-		$(".custom_other_images ul li a").unbind('click').click(function(e) {
+		$(".custom_other_images ul li img").unbind('click').click(function(e) {
 			  e.preventDefault();
 			  var title = $(this).attr("name");
 			  //alert(title);
-			  
+			  var mnimg = $(this).attr("src");
+			  //alert(mnimg);
 			  if($(".back_stripe").css('display') == "block"){
-			  	imgmain.src="product_customization/images/products/" + title + "_b.jpg";
+			  	imgmain.src= mnimg;
 			  }else{
-			    imgmain.src="product_customization/images/products/" + title + ".jpg";
-			  }
-			  
+			    imgmain.src= mnimg;
+			  }			  
 			  if($(".back_logo").css('display') == "block"){
-			  	imgmain.src="product_customization/images/products/" + title + "_b.jpg";
+			  	imgmain.src= mnimg;
 			  }else{
-			    imgmain.src="product_customization/images/products/" + title + ".jpg";
-			  }
-			  
+			    imgmain.src= mnimg;
+			  }			  
 			  $("#custom_back").attr('name',title+'_b');
 			  $("#custom_front").attr('name',title);
 		});
@@ -45,7 +44,7 @@
 	// Reflective Stripes
 	
 		//Dropdown plugin data
-            var ddData = [
+          /*  var ddData = [
                 {
                     text: 'Industrial Wash - 2" Silver FR 1J',
                     value: "IW21J",
@@ -85,9 +84,19 @@
 		$('#custom_stripes_style').ddslick({
 			data: ddData,
 			selectText: "Select your desired Style"
+		});*/
+		
+		$(".add_reflective_stripes .zform_select").change(function () {
+			var dd_val = "";
+			$(".add_reflective_stripes .zform_select option:selected").each(function () {
+				//strp += $(this).attr("data-thumbnail");
+				dd_val += $(this).attr("id");
+			});
 		});
 		
-		$("#custom_stripes_style li").unbind('click').click(function() {
+		
+		
+		/*$("#custom_stripes_style li").unbind('click').click(function() {
 			$(".ref_location").show();
 			var dd_val = $("#custom_stripes_style .dd-selected-value").val();
 			
@@ -99,13 +108,17 @@
 				$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp_stl_up +".png'>");
 			});
 			
-		});
-		$(".custom_stripes_positon").change(function () {
+		});*/
+		
+       
+			
+         
+		$(".add_reflective_stripes .pogType_select select").change(function () {
 		var strp = "";
-		$(".custom_stripes_positon option:selected").each(function () {
+		$(".add_reflective_stripes .pogType_select select option:selected").each(function () {
 		strp += $(this).val();
 		});
-		var dd_val = $("#custom_stripes_style .dd-selected-value").val();
+		var dd_val = $(".add_reflective_stripes .zform_select option:selected").attr("id");
 		$(".selected_options").css("display","block");
 		$(".custom_reflective_strp ul li#"+ strp +"_f").append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_f.png'>");
 		$(".custom_reflective_strp ul li#"+ strp +"_b").append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_b.png'>");
@@ -247,7 +260,7 @@
 	// Embroidered Text
 	
 	//Dropdown plugin data
-			var ddData = [
+			/*var ddData = [
 				{
 					text: 'BL Black',
 					value: "50064-BL",
@@ -282,7 +295,7 @@
 			$('#custom_embroid_color').ddslick({
 				data: ddData,
 				selectText: "Select your desired Color"
-			});
+			});*/
 			$(".custom_embroid_positon").change(function () {
 				var embroid = "";
 				$(".custom_embroid_positon option:selected").each(function () {
@@ -344,3 +357,4 @@
 				});
 				}
 			});
+}, 5000);

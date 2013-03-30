@@ -1,4 +1,4 @@
-.custom_product_wrap{width:870px; height:670px; background:#fff; border:2px solid #ddd; margin:20px auto; padding:15px;}
+	.custom_product_wrap{width:870px; height:670px; background:#fff; border:2px solid #ddd; margin:20px auto; padding:15px;}
 	.custom_product_wrap h2{font-size:18px; font-weight:normal; color:#000; margin:0 0 15px 0; padding:0;}
 	.custom_product_lt{width:502px; float:left; margin-right:15px;}
 	.custom_product_rt{width:350px; border:1px solid #ddd; float:left; height:628px; padding:0;}
