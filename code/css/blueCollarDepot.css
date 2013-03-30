@@ -5,7 +5,7 @@ div#header
 	height: 169px;
 	position: relative;
 	width: 100%;
-	z-index: 1000;
+	z-index: 1;
 }
 	div#header div#headerContent
 	{

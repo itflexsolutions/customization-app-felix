@@ -717,7 +717,16 @@ this will likely become more flexible in the future. ###
 	<a href='#' onClick="app.ext.myRIA.a.add2BuyerList({sku:$(this).parent().attr('data-pid'),'listid':'wishlist'}); return false;">Add to Wishlist</a>
 
 	</menu>
-
+<button id="customize_but"  style="background:#084b9a; -moz-border-radius: 5px; border-radius:5px; border:1px solid #04448e; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px; cursor:pointer; margin:10px 10px 10px 0; display:inline-block; text-decoration:none;">Customize</button>
+		<script type="text/javascript">
+			 $( "#customize_but" ).click(function() {
+				$( "#prod_customize" ).dialog({
+					height: 840,
+					width: 970,
+					modal: true
+					});
+				});
+		</script>
 	</td>
 </tr>
 <tr>
@@ -789,7 +798,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
   </tr>
     <tr>
 	<td colspan="2">
-		<div id="prod_customize" style="display:block;" title="Customize ">
+		<div id="prod_customize" style="display:none;" title="Customize ">
 		<div class="custom_product_wrap">
 		<link href="product_customization/css/prod_custom.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript" src="product_customization/scripts/jquery-ui.js"></script>
@@ -984,6 +993,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 			
         </div>
     </div>	
+	
 </div>
 
 	</td>
