@@ -102,7 +102,6 @@ window.setTimeout(function () {
 				var str_possa = strp_stl_up.replace("ref", "");
 					//alert(dd_val+"_"+strp_stl_up);
 					$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
-					$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
 					$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='product_customization/images/reflective_stripes/" + dd_val+"_"+str_possa +".png'>");
 				});
 			});
