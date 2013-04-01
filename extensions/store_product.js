@@ -397,6 +397,7 @@ for ( var i=0, len=ids.length; i<len; ++i) {
 	}
 	}
 $display.appendTo($tag);	
+
 						}
 					else	{
 //						app.u.dump(" -> @variations is empty.");
@@ -436,7 +437,6 @@ $display.appendTo($tag);
 //						app.u.dump(" -> @variations is empty.");
 						}
 					}
-					
 				}, 
 				
 				custom_sog_logo : function($tag,data)	{
@@ -502,7 +502,7 @@ $display.appendTo($tag);
 //						app.u.dump(" -> @variations is empty.");
 						}
 					}
-					
+					prod_customize();					
 				}, 
 
 //will remove the add to cart button if the item is not purchaseable.

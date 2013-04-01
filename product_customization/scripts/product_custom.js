@@ -1,4 +1,4 @@
-window.setTimeout(function () {
+function prod_customize() {
 // Front and Back
 		$("#custom_back").unbind('click').click(function(e) {
 			  e.preventDefault();
@@ -92,22 +92,21 @@ window.setTimeout(function () {
 			var dd_val = "";
 			$(".add_reflective_stripes .pogType_select").show();
 			$(".add_reflective_stripes .zform_select option:selected").each(function () {
-				//strp += $(this).attr("data-thumbnail");
+				var strp = $(".add_reflective_stripes .imageselect_image img").attr("title");
+				alert(strp);
 				dd_val += $(this).attr("id");
-				
-				
+				var sel_sty = $(this).text();
+				$(".add_reflective_stripes .sel_option_sty span").html(sel_sty);
 				$(".custom_reflective_strp ul li:visible").each(function (){
 					var strp_stl_up = $(this).attr("id");
-				
 				var str_possa = strp_stl_up.replace("ref", "");
 					//alert(dd_val+"_"+strp_stl_up);
 					$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
-					$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='product_customization/images/reflective_stripes/" + dd_val+"_"+str_possa +".png'>");
+					$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='"+strp + "reflective_stripes/" + dd_val+"_"+str_possa +".png'>");
+					
 				});
 			});
 		});
-		
-		
 		
 		/*$("#custom_stripes_style li").unbind('click').click(function() {
 			$(".ref_location").show();
@@ -138,11 +137,10 @@ window.setTimeout(function () {
 		$(".selected_options").css("display","block");
 		$(".custom_reflective_strp ul li#ref"+ strp +"_f").append("<img alt='' src='product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_f.png'>");
 		$(".custom_reflective_strp ul li#ref"+ strp +"_b").append("<img alt='' src='product_customization/images/reflective_stripes/" + dd_val+"_"+strp +"_b.png'>");
-		$(".custom_reflective_strp ul li#stripnone").css("display","none");
 		if ( $(".add_reflective_stripes .pogType_select select option:selected").val() == str_pos ) {
 			var sel_opt = $(".add_reflective_stripes .zform_select option:selected").text();
 			var sel_opt_val = $(".add_reflective_stripes .zform_select option:selected").val();
-			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span><b>Position :</b> " + str_pos_txt +"</span><span class='strp_style_select'><b>Style :</b> " + sel_opt +"</span><small title='"+ str_pos +"' name='" + str_pos_txt +"'>X</small></p>");
+			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span><b>Position :</b> " + str_pos_txt +"</span><small title='"+ str_pos +"' name='" + str_pos_txt +"'>X</small></p>");
 			$(".selected_options_list span#sel_opt" + sel_opt_val).html(sel_opt);
 			$(".add_reflective_stripes .pogType_select select option:selected").remove();
 		}
@@ -373,4 +371,4 @@ window.setTimeout(function () {
 				});
 				}
 			});
-}, 5000);
+}

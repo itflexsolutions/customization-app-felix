@@ -31,7 +31,7 @@
 	
 	.selected_options p{padding:10px 0 10px 0; display:block; border-bottom:1px solid #ddd; margin:0; position:relative;}
 	.selected_options p small{float:right; cursor:pointer; background:#ddd; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:0 5px; -moz-border-radius: 5px; border-radius:5px; line-height:18px; font-weight:bold; margin-right:10px; position:absolute; top:10px; right:0;}
-	.selected_options p span{display:block; clear:both; width:90%;}
+	.selected_options p span, p.sel_option_sty span{display:block; clear:both; width:90%; font-size:12px;}
 	
 	.custom_product_wrap .ui-accordion .ui-accordion-content{height:335px; padding:10px;}
 	#accordion h3{font-size:14px; font-weight:bold; color:#fff; background:#084691; padding:8px 10px!important; margin:0!important; border:1px solid #1456a0; border-bottom:none; cursor:pointer;}
@@ -185,3 +185,5 @@
     width: 30px;
     z-index: 2147483647;
 }
+
+.add_Logo .pogType_imggrid{display:none;}

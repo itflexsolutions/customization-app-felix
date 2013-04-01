@@ -45,7 +45,6 @@ look for line:
 if(index.substring(0,4) == 'pog_')
 
 */
-
 handlePogs = function(v,o) {
 	this.initialize(v,o);
 	return true; //return something. mostly just to appease the console warning.
@@ -209,9 +208,8 @@ renderOptionIMGSELECT: function(pog) {
 	var $parentDiv = $("<span \/>").addClass('imgSelectContainer');
 	var $selectList = $("<select>").attr({"name":pogid}).addClass('zform_select').bind('change', function(e){
 		var thumbnail = $("option:selected",$(this)).attr('data-thumbnail');
-		$(this).closest('.imgSelectContainer').find('img').attr('src',app.u.makeImage({"w":pog.width,"h":pog.height,"name":thumbnail,"b":"FFFFFF","tag":false,"lib":app.username}));
-		var img_txt = ('src',app.u.makeImage({"w":pog.width,"h":pog.height,"name":thumbnail,"b":"FFFFFF","tag":false,"lib":app.username}));
-		
+		var img_txt = app.u.makeImage({"name":"","lib":app.username})
+		$(this).closest('.imgSelectContainer').find('img').attr('src',app.u.makeImage({"w":pog.width,"h":pog.height,"name":thumbnail,"b":"FFFFFF","tag":false,"lib":app.username})).attr({"title":img_txt});
 		});
     var i = 0;
     var len = pog.options.length;
