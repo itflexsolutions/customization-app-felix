@@ -1,4 +1,4 @@
-	.custom_product_wrap{width:870px; height:670px; background:#fff; border:2px solid #ddd; margin:20px auto; padding:15px;}
+jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; border:2px solid #ddd; margin:20px auto; padding:15px;}
 	.custom_product_wrap h2{font-size:18px; font-weight:normal; color:#000; margin:0 0 15px 0; padding:0;}
 	.custom_product_lt{width:502px; float:left; margin-right:15px;}
 	.custom_product_rt{width:350px; border:1px solid #ddd; float:left; height:628px; padding:0;}
@@ -77,23 +77,29 @@
 	
 	.custom_logo{position:absolute; top:0px;}
 	.front_logo{display:block; list-style:none;}
-	.custom_logo li{width:41px; height:24px; display:block; list-style:none!important; position:absolute; text-align:90px;}
-	.front_logo #l_luf{top: 40px; left: 180px;}
-	.front_logo #l_ruf{top: 40px; left: 250px;}
+	.custom_logo li{width:41px; height:24px; display:block; list-style:none!important; position:absolute; text-align:center; overflow-x:hidden; overflow:visible;}
+	.front_logo #log_02{top: 38px; left: 180px;}
+	.front_logo #log_03{top: 38px; left: 250px;}
+	.front_logo #log_04{top: 90px; left: 180px;}
+	.front_logo #log_04 img{position:relative; left:-7px;}
+	.front_logo #log_05{top: 90px; left: 245px;}
 	
 	.back_logo{display:block; list-style:none; display:none;}
-	.back_logo #l_cmb{top: 90px; left: 230px;}
-	.back_logo #l_bbc{top: 30px; left: 230px;}
+	.back_logo #log_00{top: 90px; left: 230px;}
+	.back_logo #log_01{top: 30px; left: 230px;}
+	
+	.custom_logo img{width:35px; margin:0 auto;}
 	
 	.custom_product_logo_avail{display:none; margin:0 0 15px 0;}
 	.custom_product_logo_avail ul{display:inline-block; margin:0 0 10px 0!important;}
 	.custom_product_logo_avail li{float:left; display:inline-block!important; clear:none!important; margin:3px!important; cursor:pointer;}
 	
 	.logo_select{position:absolute; right:40px;}
+	.logo_select img{ width:35px;}
 	
 	.selected_logo_options{display:none;}
 	
-	.logo_ok, #embroid_ok{background:#084b9a; -moz-border-radius: 5px; border-radius:5px; border:1px solid #04448e; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px; cursor:pointer; margin:0 auto; text-align:center; display:block; clear:both;}
+	.logo_ok, #embroid_ok, .logo_cancel{background:#084b9a; -moz-border-radius: 5px; border-radius:5px; border:1px solid #04448e; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px; cursor:pointer; margin:0 auto; text-align:center; display:inline-block;}
 		
 	#custom_stripes_style{width:295px; margin-bottom:10px;}
 	.custom_product_rt .dd-select{width:295px!important;}
@@ -168,7 +174,7 @@
 	
 	.logo_options li a{color:#000; text-decoration:none;}
 	
-	.state_nm{font-size:10px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#fff; display:block; text-align:center; margin-top:-9px;}
+	.state_nm{font-size:10px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#fff; display:block; text-align:center; position:relative; top:-5px; line-height:10px; }
 	
 	#accordion .ui-state-default .ui-icon{background:none!important;}
 	
@@ -176,7 +182,6 @@
     height: 35px;
     padding-left: 40px;
 }
-
 
 .add_reflective_stripes .imageselect_image {
     left: 2px;
@@ -186,4 +191,10 @@
     z-index: 2147483647;
 }
 
-.add_Logo .pogType_imggrid{display:none;}
+.add_Logo .pogType_imggrid, .add_Logo .pogType_cb, .add_Logo .logo_buts, .add_Logo .pogType_imggrid input, .add_Logo .pogType_text{display:none;}
+
+.add_Logo .pogType_imggrid img{cursor:pointer; margin:5px 3px;}
+.add_Logo .pogType_cb label{float:left; clear:none;}
+.logo_buts{margin:10px 0 0 0;}
+
+.add_Logo .pogType_text label{display:block; clear:both;}

@@ -413,13 +413,16 @@ renderOptionIMGGRID: function(pog)	{
 	var $radioInput; //used to create the radio button element.
 	var radioLabel; //used to create the radio button label.
 	var thumbnail; //guess what this holds
+	var up_thumbnail;
     var i = 0;
     var len = pog['options'].length;
 	while (i < len) {
+		thum_tit = pogid+"_"+pog['options'][i]['v'];
 		thumbnail = app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['options'][i]['img'],"b":"FFFFFF","tag":true,"lib":app.username});
+		thumbnail_up = $(thumbnail).attr({"title":thum_tit});
 		radioLabel = "<label>"+pog['options'][i]['prompt']+"<\/label>";
-		$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['options'][i]['v']});
-		$parentDiv.append(thumbnail).append($radioInput).append(radioLabel).wrap("<div class='floatLeft'><\/div>");;
+		$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['options'][i]['v'], class:"img_"+thum_tit});
+		$parentDiv.append(thumbnail_up).append($radioInput)/*.append(radioLabel)*/.wrap("<span class='floatLeft'><\/span>");
 		i++
 		}
 	

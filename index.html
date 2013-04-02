@@ -830,12 +830,14 @@ It's done this way because ID's hard coded into template are bad mojo (templates
                 </div>
 				<div class="custom_logo">
 					<ul class="front_logo">
-                    	<li id="l_luf"></li>
-						<li id="l_ruf"></li>
+                    	<li id="log_02"></li>
+						<li id="log_03"></li>
+						<li id="log_04"></li>
+						<li id="log_05"></li>
                     </ul>
 					<ul class="back_logo" >
-                    	<li id="l_cmb"></li>
-                        <li id="l_bbc"></li>
+                    	<li id="log_00"></li>
+                        <li id="log_01"></li>
                     </ul>
 				</div>
                 <div class="custom_image_rotate" style="visibility:hidden;">
@@ -858,7 +860,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
         <div class="custom_product_rt">
         	<div class="custom_product_rt_top">
 				<h2>Customization Options</h2>
-				<p class="custom_price"><label>Price : </label>$<span class='basePrice' data-bind='var: product(zoovy:base_price); format:money; hideZero:false;'></span></p>
+				<p class="custom_price"><label>Price  </label>$<span class='basePrice' data-bind='var: product(zoovy:base_price); format:money; hideZero:false;'></span></p>
 			</div>
 		
 			<div id="accordion">
@@ -870,7 +872,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 							<div class="selected_options_list">
 								<p class="sel_option_sty"><label>Style </label><span></span></p>
 								<div class="sel_option_loc">
-								
+									<p style="border-bottom:none;"><label>Positions </label></p>
 								</div>
 							</div>
 						</div>
@@ -878,63 +880,13 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 				<h3>Logo</h3>
 				<div class="add_Logo">
 					<div data-bind='var: product(pid); format:custom_sog_logo; extension:store_product;' class='borderNone'></div>
-					<ul>
-						<li class="custom_product_logo_position">
-							<label>Choose your desired Position :</label>
-							<select class="custom_logo_positon">
-								<optgroup>
-									<option value="logonone">Select the Position</option>
-									<option value="l_luf">Left Upper Front</option>
-									<option value="l_ruf">Right Upper Front</option>
-									<option value="l_cmb">Center Middle Back</option>
-									<option value="l_bbc">Back - Below Collar</option>
-								</optgroup>
-							</select>
-						</li>
-						<li class="logo_options">
-							<label>Choose your desired Type : </label>
-							<ul>
-								<li class="registered_logos"><a href="#">Registered Logos</a></li>
-								<li class="generic_logos"><a href="#">Generic Logos</a></li>
-								<li class="state_flags"><a href="#">State Flags</a></li>
-							</ul>
-						</li>
-						<li class="custom_product_logo_avail custom_product_registered_logos">
-							<label>Choose your desired Logo :</label>
-							<ul>
-								<li name="audi"><img alt="" src="product_customization/images/logos/audi.png" border="0" width="95"></li>
-								<li name="fireandsafety"><img alt="" src="product_customization/images/logos/fireandsafety.png" border="0" width="95"></li>
-								<li name="hundai"><img alt="" src="product_customization/images/logos/hundai.png" border="0"  width="95"></li>
-								
-							</ul>
-							<button class="logo_ok" name="">Ok</button>						
-						</li>
-						<li class="custom_product_logo_avail custom_product_countryflags_avail">
-							<label>Choose your desired flag and text :</label>
-							<ul>
-								<li name="USA"><img alt="" src="product_customization/images/logos/USA.png" border="0"  width="95"></li>
-							</ul>
-							<p><label>State Name :</label>
-							    <input type="text" class="custom_state_name" value="" /></p>
-							<button class="logo_ok" name="">Ok</button>						
-						</li>
-						<li class="custom_product_logo_avail custom_product_flags_avail">
-							<label>Choose your desired flag and text :</label>
-							<ul>
-								<li name="texas"><img alt="" src="product_customization/images/logos/texas.png" border="0" width="95"></li>
-								<li name="florida"><img alt="" src="product_customization/images/logos/florida.png" border="0" width="95"></li>
-								<li name="alaska"><img alt="" src="product_customization/images/logos/alaska.png" border="0"  width="95"></li>
-							</ul>
+					<div class="logo_buts"><button class="logo_ok" name="">Ok</button>		<!--<button class="logo_cancel" name="">Cancel</button>--></div>
+					<div class="selected_logo_options">
+						<label>Selected Position and Logo </label>
+						<div class="selected_logo_options_list">
 							
-							<button class="logo_ok" name="">Ok</button>						
-						</li>
-						<li class="selected_logo_options">
-							<label>Selected Position and Logo :</label>
-							<div class="selected_logo_options_list">
-								
-							</div>
-						</li>
-					</ul>
+						</div>
+					</div>
 				</div>
 				<h3>Embroidered Text</h3>
 				<div class="add_embroidery">
@@ -992,7 +944,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 				</div>
 				
 			</div>
-			<!--<input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />-->
+			<input type='submit' style="margin-top:10px;" value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />
 			
         </div>
     </div>	

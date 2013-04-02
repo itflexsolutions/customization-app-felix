@@ -23,11 +23,9 @@ function prod_customize() {
 		$(".custom_other_images ul li img").unbind('click').click(function(e) {
 			  e.preventDefault();
 			  var title = $(this).attr("name");
-			  //alert(title);
 			  
 			  var mnimg_o = $(this).attr("src");
 			  var mnimg = mnimg_o.replace("W70-H75-", "");
-			  //alert(mnimg);
 			  if($(".back_stripe").css('display') == "block"){
 			  	imgmain.src= mnimg;
 			  }else{
@@ -41,7 +39,10 @@ function prod_customize() {
 			  $("#custom_back").attr('name',title+'_b');
 			  $("#custom_front").attr('name',title);
 		});
-		
+		$( ".pogType_select select" ).each(function() {
+			var sel_cls = $(this).attr('name');
+			$(this).addClass( "selcls_"+sel_cls );
+			});
 	
 	// Reflective Stripes
 	
@@ -93,17 +94,14 @@ function prod_customize() {
 			$(".add_reflective_stripes .pogType_select").show();
 			$(".add_reflective_stripes .zform_select option:selected").each(function () {
 				var strp = $(".add_reflective_stripes .imageselect_image img").attr("title");
-				alert(strp);
 				dd_val += $(this).attr("id");
 				var sel_sty = $(this).text();
 				$(".add_reflective_stripes .sel_option_sty span").html(sel_sty);
 				$(".custom_reflective_strp ul li:visible").each(function (){
 					var strp_stl_up = $(this).attr("id");
 				var str_possa = strp_stl_up.replace("ref", "");
-					//alert(dd_val+"_"+strp_stl_up);
 					$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
 					$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='"+strp + "reflective_stripes/" + dd_val+"_"+str_possa +".png'>");
-					
 				});
 			});
 		});
@@ -122,14 +120,10 @@ function prod_customize() {
 			
 		});*/
 		
-       
-			
-         
 		$(".add_reflective_stripes .pogType_select select").change(function () {
 		var strp = "";
 		$(".add_reflective_stripes .pogType_select select option:selected").each(function () {
 		strp += $(this).val();
-		//alert(strp);
 		});
 		var str_pos = $(".add_reflective_stripes .pogType_select select option:selected").val();
 		var str_pos_txt = $(".add_reflective_stripes .pogType_select select option:selected").text();
@@ -140,7 +134,7 @@ function prod_customize() {
 		if ( $(".add_reflective_stripes .pogType_select select option:selected").val() == str_pos ) {
 			var sel_opt = $(".add_reflective_stripes .zform_select option:selected").text();
 			var sel_opt_val = $(".add_reflective_stripes .zform_select option:selected").val();
-			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span><b>Position :</b> " + str_pos_txt +"</span><small title='"+ str_pos +"' name='" + str_pos_txt +"'>X</small></p>");
+			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span>" + str_pos_txt +"</span><small title='"+ str_pos +"' name='" + str_pos_txt +"'>X</small></p>");
 			$(".selected_options_list span#sel_opt" + sel_opt_val).html(sel_opt);
 			$(".add_reflective_stripes .pogType_select select option:selected").remove();
 		}
@@ -167,67 +161,64 @@ function prod_customize() {
 		
 	// Logo 
 	
-	$(".custom_logo_positon").change(function () {
+	$(".add_Logo .pogType_select select").change(function () {
 		var logo = "";
-		$(".custom_logo_positon option:selected").each(function () {
+		var logo_pos = "";
+		$(".add_Logo .pogType_select select option:selected").each(function () {
 		logo += $(this).val();
-		$(".custom_product_logo_avail li").css("border","1px solid #fff");
+		logo_pos += $(this).text();
+		$(".add_Logo .pogType_imggrid img").css("border","1px solid #fff");
 		});
-		if ( logo != "logonone" ){ 
+		
+			$(".add_Logo .pogType_imggrid").css("display","none");
+			$(".add_Logo .pogType_imggrid").show();
 			
-			$(".custom_product_logo_avail").css("display","none");
-			$(".logo_options").css("display","block");
-			$(".registered_logos a").unbind('click').click(function(e) {
-				$(".logo_options").css("display","none");
-				$(".custom_product_registered_logos").css("display","block");
-			});
-			$(".generic_logos a").unbind('click').click(function(e) {
-				$(".logo_options").css("display","none");
-				$(".custom_product_logo_avail").css("display","none");
-				$(".custom_product_countryflags_avail").css("display","block");
-			});
-			$(".state_flags a").unbind('click').click(function(e) {
-				$(".logo_options").css("display","none");
-				$(".custom_product_logo_avail").css("display","none");
-				$(".custom_product_flags_avail").css("display","block");
-			});
-			$(".custom_product_logo_avail li").unbind('click').click(function(e) {
-				e.preventDefault();
-				$(".custom_product_logo_avail li").css("border","1px solid #fff");
+			$(".add_Logo .logo_buts").show();
+			$(".add_Logo .pogType_imggrid img").unbind('click').click(function(e) {
+				$(".add_Logo .pogType_cb").show();
+				var img_ti = $(this).attr("title");
+				$(".add_Logo .pogType_imggrid input.img_"+img_ti).attr('checked', 'checked');
+				$(".add_Logo .pogType_imggrid img").css("border","1px solid #fff");
 				$(this).css("border","1px solid #ccc");
-				var logoimg = $(this).attr("name");
-				$(".logo_ok").attr("name",logoimg);
-				
+				$(".add_Logo .pogType_cb input").unbind('click').click(function(e) {
+					$(".add_Logo .pogType_text").show();												 
+				});
+				var logoimg = $(this).attr("src");
+				var logoimga = logoimg.replace("W87-H58-BFFFFFF", "");
+				$(".logo_ok").attr("name",logoimga);
 				
 				$(".logo_ok").unbind('click').click(function(e) {
-					if ( $(".custom_logo_positon option:selected").val() == logo ) {
+					if ( $(".add_Logo .pogType_select select option:selected").val() == logo ) {
 						$(".selected_logo_options").css("display","block");
-						var state_name = "";
-						state_name = $(".custom_state_name").val();
-						$(".custom_logo ul li#"+ logo).append("<img alt='' src='product_customization/images/logos/" + logoimg +"_small.png'>");
-						$(".custom_logo ul li#"+ logo).append("<span class='state_nm'>" + state_name + "</span>");
-						var sel_logo_opt = $(".custom_logo_positon option:selected").text();
-						var sel_logo_opt_val = $(".custom_logo_positon option:selected").val();
-						$(".custom_product_logo_avail").css("display","none");
-						$(".selected_logo_options_list").append("<p id='sel_logo_opt" + sel_logo_opt_val + "'><span>" + sel_logo_opt +"</span><span class='logo_select'><img alt='' src='product_customization/images/logos/" + logoimg +"_small.png'></span><small title='"+ sel_logo_opt_val +"' name='" + sel_logo_opt +"'>X</small></p>");
-						$(".selected_logo_options_list span#sel_logo_opt" + sel_logo_opt_val).html(sel_logo_opt);
-						$(".custom_logo_positon option:selected").remove();
-						$(".custom_embroid_positon option[value~='" + logo +"']").remove();
+						var logo_text = "";
+						logo_text = $(".add_Logo .pogType_text input").val();
+						$(".state_nm").show();
+						$(".custom_logo ul li#log_"+ logo).append("<img alt='' src='" + logoimga +"'>").append("<span class='state_nm'>" + logo_text + "</span>");;
+						$(".add_Logo .pogType_imggrid").css("display","none");
+						$(".selected_logo_options_list").append("<p id='logo_pos" + logo + "'><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><small title='"+ logo +"' name='" + logo_pos +"'>X</small></p>");
+						//$(".selected_logo_options_list span#sel_logo_opt" + logo).html(logo_pos);
+						$(".add_Logo .pogType_select select option:selected").remove();
+						$(".add_embroidery .pogType_select .selcls_AA option[value~='" + logo + "']").remove();
 						/*$(".custom_logo ul li#"+ logo).css("display","block");
 						$(".custom_logo ul li#stripnone").css("display","none");*/
 						var current_price = $(".custom_price span").text();
 						var stripes_price=parseInt(current_price) + 5;
 						$(".custom_price span").html(stripes_price);
-						$(".custom_state_name").val('');						
+						$(".custom_state_name").val('');			
+						$(".add_Logo .pogType_imggrid").hide();
+						$(".add_Logo .pogType_cb").hide();
+						$(".add_Logo .logo_buts").hide();
+						$(".add_Logo .pogType_text").hide();
+						$(".add_Logo .pogType_cb input").removeAttr("checked");
 					}
 					$(".selected_logo_options_list small").unbind('click').click(function() {
 						//e.preventDefault();
 						var loref = "";
 						loref = $(this).attr("title");
 						var sel_logo = $(this).attr("name");
-							$(".custom_logo ul li#" + loref).html("");
-							$(".custom_logo_positon optgroup").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
-							$(".custom_embroid_positon optgroup").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
+							$(".custom_logo ul li#log_"+ logo).html("");
+							$(".add_Logo .pogType_select select").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
+							$(".add_embroidery .pogType_select .selcls_AA").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
 							var lcurrent_price = $(".custom_price span").text();
 							var lupdaterefprice = parseInt(lcurrent_price)-5;
 							$(".custom_price span").html(lupdaterefprice);
@@ -236,7 +227,6 @@ function prod_customize() {
 					
 				});
 			});
-		}
 		});	
 		
 	// Size 
