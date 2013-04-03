@@ -209,7 +209,7 @@ renderOptionIMGSELECT: function(pog) {
 	var $selectList = $("<select>").attr({"name":pogid}).addClass('zform_select').bind('change', function(e){
 		var thumbnail = $("option:selected",$(this)).attr('data-thumbnail');
 		var img_txt = app.u.makeImage({"name":"","lib":app.username})
-		$(this).closest('.imgSelectContainer').find('img').attr('src',app.u.makeImage({"w":pog.width,"h":pog.height,"name":thumbnail,"b":"FFFFFF","tag":false,"lib":app.username})).attr({"title":img_txt});
+		$(this).closest('.imgSelectContainer').find('img').attr('src',app.u.makeImage({"name":thumbnail,"tag":false,"lib":app.username})).attr({"title":img_txt});
 		});
     var i = 0;
     var len = pog.options.length;
@@ -243,11 +243,6 @@ renderOptionIMGSELECT: function(pog) {
 	$imageDiv.appendTo($parentDiv);
 //	app.u.dump('END renderOptionIMGSELECT for pog '+pog.id);
 	return $parentDiv;
-	//Dropdown plugin data
-            
-		$('#custom_stripes_style').ddslick({
-			selectText: "Select your desired Style"
-		});
 	},
 
 //upgraded to jquery. needs css love.

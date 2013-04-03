@@ -717,7 +717,7 @@ this will likely become more flexible in the future. ###
 	<a href='#' onClick="app.ext.myRIA.a.add2BuyerList({sku:$(this).parent().attr('data-pid'),'listid':'wishlist'}); return false;">Add to Wishlist</a>
 
 	</menu>
-<!--<button id="customize_but"  style="background:#084b9a; -moz-border-radius: 5px; border-radius:5px; border:1px solid #04448e; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px; cursor:pointer; margin:10px 10px 10px 0; display:inline-block; text-decoration:none;">Customize</button>
+<button id="customize_but"  style="background:#084b9a; -moz-border-radius: 5px; border-radius:5px; border:1px solid #04448e; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px; cursor:pointer; margin:10px 10px 10px 0; display:inline-block; text-decoration:none;">Customize</button>
 		<script type="text/javascript">
 			 $( "#customize_but" ).click(function() {
 				$( "#prod_customize" ).dialog({
@@ -726,7 +726,7 @@ this will likely become more flexible in the future. ###
 					modal: true
 					});
 				});
-		</script>-->
+		</script>
 	</td>
 </tr>
 <tr>
@@ -798,7 +798,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
   </tr>
     <tr>
 	<td colspan="2">
-		<div id="prod_customize" style="display:block;" title="Customize ">
+		<div id="prod_customize" style="display:none;" title="Customize ">
 		<div class="custom_product_wrap">
 		<link href="product_customization/css/prod_custom.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript" src="product_customization/scripts/jquery-ui.js"></script>
@@ -891,60 +891,17 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 				<h3>Embroidered Text</h3>
 				<div class="add_embroidery">
 					<div data-bind='var: product(pid); format:custom_sog_embroidered; extension:store_product;' class='borderNone'></div>
-					<ul>
-						<li class="custom_product_embroid_position">
-							<label>Choose your desired Position :</label>
-							<select class="custom_embroid_positon">
-								<optgroup>
-									<option value="logonone">Select the Position</option>
-									<option value="l_luf">Left Upper Front</option>
-									<option value="l_ruf">Right Upper Front</option>
-									<option value="l_cmb">Center Middle Back</option>
-									<option value="l_bbc">Back - Below Collar</option>
-								</optgroup>
-							</select>
-						</li>
-						<li class="custom_product_embroid_options">
-							<label>Choose your desired style and Text :</label>
-							<p>
-								<label>Style and Size :</label>
-								<select class="custom_embroid_style">
-									<optgroup>
-										<option value="stylnone">Select the Style</option>
-										<option value="B08">8mm B08 Block(22 Characters)</option>
-										<option value="B15">15mm B15 Block(14 Characters)</option>
-										<option value="S12">12mm S12 Script(19 Characters)</option>
-										<option value="S18">18mm S18 Script(12 Characters)</option>
-										<option value="R15">15mm R15 VR Block(13 Characters)</option>
-										<option value="R25">25mm R25 VR Block(6 Characters)</option>
-										<option value="T12">12mm T12 Brush Script(28 Characters)</option>
-										<option value="T18">18mm T18 Brush Script(11 Characters)</option>
-									</optgroup>
-								</select>
-							</p>
-							<p>
-								<label>Color :</label>
-								<select id="custom_embroid_color">
-									
-								</select>
-							</p>
-							<p>
-								<label>Text :</label>
-							    <input type="text" class="custom_embroid_text" value="" />
-							</p>
-							<button id="embroid_ok" name="">Ok</button>
-						</li>	
-						<li class="selected_embroid_options">
-							<label>Selected Position, Style and Text :</label>
-							<div class="selected_embroid_options_list">
-								
-							</div>
-						</li>
-					</ul>
+					<div class="embroid_but"><button id="embroid_ok" name="">Ok</button></div>
+					<div class="selected_embroid_options">
+						<label>Selected Position, Style and Text :</label>
+						<div class="selected_embroid_options_list">
+							
+						</div>
+					</div>
 				</div>
 				
 			</div>
-			<input type='submit' style="margin-top:10px;" value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />
+			<!--<input type='submit' style="margin-top:10px;" value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />-->
 			
         </div>
     </div>	

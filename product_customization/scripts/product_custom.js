@@ -41,54 +41,12 @@ function prod_customize() {
 		});
 		$( ".pogType_select select" ).each(function() {
 			var sel_cls = $(this).attr('name');
-			$(this).addClass( "selcls_"+sel_cls );
+			$(this).parent().parent().addClass( "selcls_"+sel_cls );
 			});
-	
+		
 	// Reflective Stripes
 	
-		//Dropdown plugin data
-          /*  var ddData = [
-                {
-                    text: 'Industrial Wash - 2" Silver FR 1J',
-                    value: "IW21J",
-                    imageSrc: "product_customization/images/reflective_stripes/IW21J.png"
-                },
-                {
-                    text: 'Industrial Wash - 2" Ylw/Slver/Ylw FR 1B',
-                    value: "IW21B",
-                    imageSrc: "product_customization/images/reflective_stripes/IW21B.png"
-                },
-                {
-                    text: 'Home Wash - 1" Silver S1',
-                    value: "HW1S1",
-                    imageSrc: "product_customization/images/reflective_stripes/HW1S1.png"
-                },
-                {
-                    text: 'Home Wash - 2" Silver FR S2',
-                    value: "HW2S2",
-                    imageSrc: "product_customization/images/reflective_stripes/HW2S2.png"
-                },
-                {
-                    text: 'Home Wash - 2" Ylw/Slver/Ylw FR Y3',
-                    value: "HW2Y3",
-                    imageSrc: "product_customization/images/reflective_stripes/HW2Y3.png"
-                },
-                {
-                    text: 'Home Wash - 2" Yellow 1N',
-                    value: "HW21N",
-                    imageSrc: "product_customization/images/reflective_stripes/HW21N.png"
-                },
-                {
-                    text: 'Home Wash - 1" Yellow Y1',
-                    value: "HW1Y1",
-                    imageSrc: "product_customization/images/reflective_stripes/HW1Y1.png"
-                }
-            ];
-		$('#custom_stripes_style').ddslick({
-			data: ddData,
-			selectText: "Select your desired Style"
-		});*/
-		
+		$(".add_reflective_stripes .imageselect_image img").attr("title");
 		$(".add_reflective_stripes .zform_select").change(function () {
 			var dd_val = "";
 			$(".add_reflective_stripes .pogType_select").show();
@@ -104,22 +62,9 @@ function prod_customize() {
 					$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='"+strp + "reflective_stripes/" + dd_val+"_"+str_possa +".png'>");
 				});
 			});
+			$(".add_reflective_stripes .zform_select").css("padding-left","40px");
 		});
-		
-		/*$("#custom_stripes_style li").unbind('click').click(function() {
-			$(".ref_location").show();
-			var dd_val = $("#custom_stripes_style .dd-selected-value").val();
 			
-			$(".custom_reflective_strp ul li:visible").each(function (){
-				var strp_stl_up = $(this).attr("id");
-				//alert(dd_val+"_"+strp_stl_up);
-				$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
-				$(".custom_reflective_strp ul li#"+ strp_stl_up +" img").remove();
-				$(".custom_reflective_strp ul li#"+ strp_stl_up).append("<img alt='' src='product_customization/product_customization/images/reflective_stripes/" + dd_val+"_"+strp_stl_up +".png'>");
-			});
-			
-		});*/
-		
 		$(".add_reflective_stripes .pogType_select select").change(function () {
 		var strp = "";
 		$(".add_reflective_stripes .pogType_select select option:selected").each(function () {
@@ -169,10 +114,8 @@ function prod_customize() {
 		logo_pos += $(this).text();
 		$(".add_Logo .pogType_imggrid img").css("border","1px solid #fff");
 		});
-		
-			$(".add_Logo .pogType_imggrid").css("display","none");
+		if ( logo != "" ){ 
 			$(".add_Logo .pogType_imggrid").show();
-			
 			$(".add_Logo .logo_buts").show();
 			$(".add_Logo .pogType_imggrid img").unbind('click').click(function(e) {
 				$(".add_Logo .pogType_cb").show();
@@ -198,7 +141,7 @@ function prod_customize() {
 						$(".selected_logo_options_list").append("<p id='logo_pos" + logo + "'><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><small title='"+ logo +"' name='" + logo_pos +"'>X</small></p>");
 						//$(".selected_logo_options_list span#sel_logo_opt" + logo).html(logo_pos);
 						$(".add_Logo .pogType_select select option:selected").remove();
-						$(".add_embroidery .pogType_select .selcls_AA option[value~='" + logo + "']").remove();
+						$(".add_embroidery .selcls_AA select option[value~='" + logo + "']").remove();
 						/*$(".custom_logo ul li#"+ logo).css("display","block");
 						$(".custom_logo ul li#stripnone").css("display","none");*/
 						var current_price = $(".custom_price span").text();
@@ -218,7 +161,7 @@ function prod_customize() {
 						var sel_logo = $(this).attr("name");
 							$(".custom_logo ul li#log_"+ logo).html("");
 							$(".add_Logo .pogType_select select").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
-							$(".add_embroidery .pogType_select .selcls_AA").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
+							$(".add_embroidery .selcls_AA select").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
 							var lcurrent_price = $(".custom_price span").text();
 							var lupdaterefprice = parseInt(lcurrent_price)-5;
 							$(".custom_price span").html(lupdaterefprice);
@@ -227,119 +170,66 @@ function prod_customize() {
 					
 				});
 			});
+		}
 		});	
-		
-	// Size 
-		
-		$(".custom_size").change(function () {
-		var siz = "";
-		$(".custom_size option:selected").each(function () {
-		siz += $(this).val();
-		$(".custom_product_size_sel small").unbind('click').click(function(e) {
-			e.preventDefault();
-			var siz1 = "";
-			siz1 = $(".custom_size option:selected").val();
-			var size_current_price = $(".custom_price span").text();
-			//alert(siz1);
-			var updatesizeprice = parseInt(size_current_price)-parseInt(siz);
-			$(".custom_price span").html(updatesizeprice);
-			$(".custom_product_size").css("display","block");
-			$(".custom_product_size_sel").css("display","none");
-			});
-		 var sizeprice = parseInt(siz) + 1;
-		$(".custom_price span").html(sizeprice);
-		var sel_size = $(".custom_size option:selected").text();
-		$(".custom_product_size_sel span").html(sel_size);
-		$(".custom_product_size").css("display","none");
-		$(".custom_product_size_sel").css("display","block");
-		
-		});
-		//alert(sizeprice);
-		
-		//$(".custom_reflective_strp ul li#"+ siz +"_f").css("display","block");
-		});
-		//.change();
 		
 		
 	// Embroidered Text
 	
-	//Dropdown plugin data
-			var ddData = [
-				{
-					text: 'BL Black',
-					value: "50064-BL",
-					imageSrc: "product_customization/images/embroidery/50064-BL.jpg"
-				},
-				{
-					text: 'RL Royal Blue',
-					value: "50088-RL",
-					imageSrc: "product_customization/images/embroidery/50088-RL.jpg"
-				},
-				{
-					text: 'WF Wildfire',
-					value: "50562-WF",
-					imageSrc: "product_customization/images/embroidery/50562-WF.jpg"
-				},
-				{
-					text: '1A Bright Green',
-					value: "50738-1A",
-					imageSrc: "product_customization/images/embroidery/50738-1A.jpg"
-				},
-				{
-					text: 'NU Nutmeg',
-					value: "50635-NU",
-					imageSrc: "product_customization/images/embroidery/50635-NU.jpg"
-				},
-				{
-					text: 'WH White',
-					value: "50081-WH",
-					imageSrc: "product_customization/images/embroidery/50081-WH.jpg"
-				}
-			];
-			$('#custom_embroid_color').ddslick({
-				data: ddData,
-				selectText: "Select your desired Color"
-			});
-			$(".custom_embroid_positon").change(function () {
+			$(".add_embroidery .selcls_AA select").change(function () {
 				var embroid = "";
-				$(".custom_embroid_positon option:selected").each(function () {
+				$(".add_embroidery .selcls_AA select option:selected").each(function () {
 					embroid += $(this).val();
 				});
-				$(".custom_product_embroid_options").css("display","block");
-				if ( embroid != "logonone" ){ 
-					$(".custom_embroid_style").change(function () {
+				if ( embroid != "" ){ 
+					$(".add_embroidery .selcls_AB").show();
+					$(".add_embroidery .selcls_AB").change(function () {
 						var embroid_styl = "";
-						$(".custom_embroid_style option:selected").each(function () {
+						$(".add_embroidery .selcls_AB select option:selected").each(function () {
 							embroid_styl += $(this).val();
+							
 						});
-						var embroid_styln = embroid_styl.charAt(0)+"_style";
-						var embroid_siz =  "size_"+embroid_styl.charAt(1)+ embroid_styl.charAt(2);
-						$("#custom_embroid_color li").unbind('click').click(function(e) {
-						e.preventDefault();
-						var embroid_color = "";
-						embroid_color = $("#custom_embroid_color .dd-selected-value").val();
-						$(".custom_embroid_text").focusout(function() {
+						$(".add_embroidery .pogType_imgselect").show();
+						var embroid_styln = "em_" + embroid_styl + "_style";
+						$(".add_embroidery .pogType_imgselect select").change(function () {
+							var embroid_color = "";
+						$(".add_embroidery .pogType_imgselect select option:selected").each(function () {
+							embroid_color += $(this).val();
+						});
+						$(".add_embroidery .pogType_text").show();
+						$(".add_embroidery .embroid_but").show()
+						$(".add_embroidery .embroid_but button").attr("disabled", "disabled");
+						$(".add_embroidery .pogType_imgselect select").css("padding-left","80px");
+						var embroid_colorn = "em_" + embroid_color + "_color";
+						$(".add_embroidery .pogType_text input").focusout(function() {
 						var embroid_text = "";
-						embroid_text = $(".custom_embroid_text").val();
+						embroid_text = $(".add_embroidery .pogType_text input").val();
+						if(embroid_text != ""){
+							$(".add_embroidery .embroid_but button").removeAttr("disabled");
+						}
 						$("#embroid_ok").unbind('click').click(function(e) {
 							if(embroid !="" && embroid_color !="" && embroid_text !=""){
-								if ( $(".custom_embroid_style option:selected").val() == embroid_styl ) {
-									$(".custom_logo ul li#"+ embroid).append("<p class='" + embroid_styln + " col_" + embroid_color + " " + embroid_siz + "' title='" + embroid_styln + "_" + embroid_color + "_" + embroid_siz + "'>"+embroid_text+"</p>");
-									var sel_embroid_opt = $(".custom_embroid_positon option:selected").text();
-									var sel_embroid_opt_val = $(".custom_embroid_positon option:selected").val();
-									$(".custom_product_embroid_options").css("display","none");
-									$(".selected_embroid_options_list").append("<p id='sel_embroid_opt" + sel_embroid_opt_val + "'><span><b>Position :</b> " + sel_embroid_opt +"</span><span class='embroid_select_color'><b>Color :</b> "+ embroid_color +"</span><span class='embroid_select'><b>Text :</b> " + embroid_text +"</span><small title='"+ sel_embroid_opt_val +"' name='" + sel_embroid_opt +"'>X</small></p>");
+								if ( $(".add_embroidery .selcls_AB select option:selected").val() == embroid_styl ) {
+									$(".custom_logo ul li#log_"+ embroid).append("<p class='" + embroid_styln + " " + embroid_colorn + "' title='" + embroid_styln + "_" + embroid_color + "'>"+embroid_text+"</p>");
+									var sel_embroid_opt = $(".add_embroidery .selcls_AA select option:selected").text();
+									var sel_embroid_opt_val = $(".add_embroidery .selcls_AA select option:selected").val();
+									var embroid_color_txt = $(".add_embroidery .pogType_imgselect select option:selected").text();
+									$(".selected_embroid_options_list").append("<p id='sel_embroid_opt" + sel_embroid_opt_val + "'><span><b>Position :</b> " + sel_embroid_opt +"</span><span class='embroid_select_color'><b>Color :</b> "+ embroid_color_txt +"</span><span class='embroid_select'><b>Text :</b> " + embroid_text +"</span><small title='"+ sel_embroid_opt_val +"' name='" + sel_embroid_opt +"'>X</small></p>");
 									$(".selected_embroid_options_list span#sel_embroid_opt" + sel_embroid_opt_val).html(sel_embroid_opt);
-									$(".custom_embroid_positon option:selected").remove();
-									$(".custom_logo_positon option[value~='" + embroid +"']").remove();
+									$(".add_embroidery .selcls_AA select option:selected").remove();
+									$(".add_Logo .selcls_AA select option[value~='" + embroid +"']").remove();
+									$(".add_embroidery .selected_embroid_options").show();
 									/*$(".custom_embroid ul li#"+ embroid).css("display","block");
 									$(".custom_embroid ul li#logonone").css("display","none");*/
+									$(".add_embroidery .pogType_text input").val('');
+									$(".add_embroidery .pogType_imgselect").hide();
+									$(".add_embroidery .selcls_AB").hide();
+									$(".add_embroidery .embroid_but").hide();
+									$(".add_embroidery .pogType_text").hide();
 									var current_price = $(".custom_price span").text();
 									var embroid_price=parseInt(current_price) + 10;
 									$(".custom_price span").html(embroid_price);
-									$(".selected_embroid_options").css("display","block");
-									$(".custom_embroid_positon option:selected").removeAttr("selected");
-									$(".custom_embroid_text").val('');
+									$(".add_embroidery .selcls_AA select option").removeAttr("selected");
 								}
 								$(".selected_embroid_options_list small").unbind('click').click(function() {
 									//e.preventDefault();
@@ -347,8 +237,8 @@ function prod_customize() {
 									emref = $(this).attr("title");
 									var sel_embroid = $(this).attr("name");
 										$(".custom_logo ul li#" + emref + " p").remove();
-										$(".custom_embroid_positon optgroup").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
-										$(".custom_logo_positon optgroup").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
+										$(".add_embroidery .selcls_AA select").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
+										$(".add_Logo .selcls_AA select").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
 										var ecurrent_price = $(".custom_price span").text();
 										var eupdaterefprice = parseInt(ecurrent_price)-10;
 										$(".custom_price span").html(eupdaterefprice);

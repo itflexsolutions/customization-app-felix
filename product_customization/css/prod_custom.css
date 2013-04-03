@@ -80,7 +80,7 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 	.custom_logo li{width:41px; height:24px; display:block; list-style:none!important; position:absolute; text-align:center; overflow-x:hidden; overflow:visible;}
 	.front_logo #log_02{top: 38px; left: 180px;}
 	.front_logo #log_03{top: 38px; left: 250px;}
-	.front_logo #log_04{top: 90px; left: 180px;}
+	.front_logo #log_04{top: 90px; left: 180px; width:30px;}
 	.front_logo #log_04 img{position:relative; left:-7px;}
 	.front_logo #log_05{top: 90px; left: 245px;}
 	
@@ -124,43 +124,41 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 	
 	@font-face {
 	font-family: 'Conv_TS Block Bold';
-	src: url('fonts/TS Block Bold.eot');
-	src: local('?'), url('fonts/TS Block Bold.woff') format('woff'), url('fonts/TS Block Bold.ttf') format('truetype'), url('fonts/TS Block Bold.svg') format('svg');
+	src: url('../fonts/TS Block Bold.eot');
+	src: local('?'), url('../fonts/TS Block Bold.woff') format('woff'), url('../fonts/TS Block Bold.ttf') format('truetype'), url('../fonts/TS Block Bold.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	}
 	@font-face {
 	font-family: 'Conv_Marcsc___';
-	src: url('fonts/Marcsc___.eot');
-	src: local('?'), url('fonts/Marcsc___.woff') format('woff'), url('fonts/Marcsc___.ttf') format('truetype'), url('fonts/Marcsc___.svg') format('svg');
+	src: url('../fonts/Marcsc___.eot');
+	src: local('?'), url('../fonts/Marcsc___.woff') format('woff'), url('../fonts/Marcsc___.ttf') format('truetype'), url('../fonts/Marcsc___.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	}
 	@font-face {
 	font-family: 'Conv_Promotion Script';
-	src: url('fonts/Promotion Script.eot');
-	src: local('?'), url('fonts/Promotion Script.woff') format('woff'), url('fonts/Promotion Script.ttf') format('truetype'), url('fonts/Promotion Script.svg') format('svg');
+	src: url('../fonts/Promotion Script.eot');
+	src: local('?'), url('../fonts/Promotion Script.woff') format('woff'), url('../fonts/Promotion Script.ttf') format('truetype'), url('../fonts/Promotion Script.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	}
 	
-	.B_style{font-family:Arial, Helvetica, sans-serif; font-weight:bold!important;}	
-	.S_style{font-family:"Conv_Marcsc___",Arial, Helvetica, sans-serif;}	
-	.R_style{font-family:"Times New Roman", Times, serif;}	
-	.T_style{font-family:"Conv_Promotion Script",Arial, Helvetica, sans-serif;}	
+	.em_00_style{font-family:Arial, Helvetica, sans-serif; font-size:10px; font-weight:normal; margin:0;}	
+	.em_01_style{font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:normal; margin:0;}	
+	.em_02_style{font-family:"Conv_Marcsc___",Arial, Helvetica, sans-serif; font-size:11px; font-weight:normal; margin:0;}	
+	.em_03_style{font-family:"Conv_Marcsc___",Arial, Helvetica, sans-serif; font-size:13px; font-weight:normal; margin:0;}	
+	.em_04_style{font-family:"Times New Roman", Times, serif; font-size:12px; font-weight:normal; margin:0;}	
+	.em_05_style{font-family:"Times New Roman", Times, serif; font-size:14px; font-weight:normal; margin:0;}	
+	.em_06_style{font-family:"Conv_Promotion Script",Arial, Helvetica, sans-serif; font-size:11px; font-weight:normal; margin:0;}	
+	.em_07_style{font-family:"Conv_Promotion Script",Arial, Helvetica, sans-serif; font-size:13px; font-weight:normal; margin:0;}	
 	
-	.size_08{font-size:10px; font-weight:normal; margin:0;}
-	.size_12{font-size:11px; font-weight:normal; margin:0;}
-	.size_15{font-size:12px; font-weight:normal; margin:0;}
-	.size_18{font-size:13px; font-weight:normal; margin:0;}
-	.size_25{font-size:14px; font-weight:normal; margin:0;}
-	
-	.col_50064-BL{color:#000000;}
-	.col_50088-RL {color:#2b3d87}
-	.col_50562-WF{color:#9d1a1f}
-	.col_50738-1A{color:#1f6a2f}
-	.col_50635-NU{color:#562a1d}
-	.col_50081-WH{color:#ffffff}
+	.em_00_color{color:#000000;}
+	.em_01_color {color:#2b3d87}
+	.em_02_color{color:#9d1a1f}
+	.em_03_color{color:#1f6a2f}
+	.em_04_color{color:#562a1d}
+	.em_05_color{color:#ffffff}
 	
 	.selected_embroid_options .selected_embroid_options_list{overflow-x:hidden; overflow-y:auto;}
 	.selected_embroid_options p{padding:10px 0 10px 0; display:block; border-bottom:1px solid #ddd; margin:0; position:relative;}
@@ -180,7 +178,7 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 	
 	.add_reflective_stripes .imgSelectContainer .zform_select {
     height: 35px;
-    padding-left: 40px;
+    padding-left: 0;
 }
 
 .add_reflective_stripes .imageselect_image {
@@ -198,3 +196,11 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 .logo_buts{margin:10px 0 0 0;}
 
 .add_Logo .pogType_text label{display:block; clear:both;}
+
+.add_embroidery .selcls_AB, .add_embroidery .pogType_imgselect, .add_embroidery .embroid_but, .add_embroidery .pogType_text{display:none;}
+.add_embroidery .zform_div{margin-top:10px;}
+
+.add_embroidery .pogType_imgselect .imageselect_image{left: 3px; position: relative; top: -22px; width: 75px; z-index: 2147483647;}
+.add_embroidery .pogType_imgselect .imageselect_image img{width:75px; height:18px;}
+
+.embroid_but{margin-top:10px;}
