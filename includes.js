@@ -133,7 +133,8 @@ renderOptionSELECT: function(pog) {
 		optionTxt = pog['options'][i]['prompt'];
 		if(pog['options'][i]['p'])
 			optionTxt += pogs.handlePogPrice(pog['options'][i]['p']); //' '+pog['options'][i]['p'][0]+'$'+pog['options'][i]['p'].substr(1);
-		selOption = "<option value='"+pog['options'][i]['v']+"'>"+optionTxt+"<\/option>";
+			var sel_opt_price = pogs.handlePogPrice(pog['options'][i]['p']).replace("$", "").replace("+", "").replace(" ", "");
+		selOption = "<option value='"+pog['options'][i]['v']+"' title='"+sel_opt_price+"'>"+optionTxt+"<\/option>";
 		$selectList.append(selOption);
 		i++;
 		}
@@ -229,7 +230,10 @@ renderOptionIMGSELECT: function(pog) {
 		optionTxt = pog['options'][i]['prompt'];
 		if(pog['options'][i]['p'])
 			optionTxt += pogs.handlePogPrice(pog['options'][i]['p']); //' '+pog['options'][i]['p'][0]+'$'+pog['options'][i]['p'].substr(1);
-		selOption = "<option value='"+pog['options'][i]['v']+"' data-thumbnail='"+pog['options'][i]['img']+"' id='option_"+pogid+""+pog['options'][i]['v']+"'>"+optionTxt+"<\/option>";
+			img_sel_price = pogs.handlePogPrice(pog['options'][i]['p']).replace("$", "").replace("+", "").replace(" ", "");
+		selOption = "<option name='"+img_sel_price+"' value='"+pog['options'][i]['v']+"' data-thumbnail='"+pog['options'][i]['img']+"' id='option_"+pogid+""+pog['options'][i]['v']+"'>"+optionTxt+"<\/option>";
+		
+		
 		$selectList.append(selOption);
 		i++;
 		}
@@ -413,8 +417,9 @@ renderOptionIMGGRID: function(pog)	{
     var len = pog['options'].length;
 	while (i < len) {
 		thum_tit = pogid+"_"+pog['options'][i]['v'];
+		img_price = pogs.handlePogPrice(pog['options'][i]['p']).replace("$", "").replace("+", "").replace(" ", "");
 		thumbnail = app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['options'][i]['img'],"b":"FFFFFF","tag":true,"lib":app.username});
-		thumbnail_up = $(thumbnail).attr({"title":thum_tit});
+		thumbnail_up = $(thumbnail).attr({"title":thum_tit, "name":img_price});
 		radioLabel = "<label>"+pog['options'][i]['prompt']+"<\/label>";
 		$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['options'][i]['v'], class:"img_"+thum_tit});
 		$parentDiv.append(thumbnail_up).append($radioInput)/*.append(radioLabel)*/.wrap("<span class='floatLeft'><\/span>");
@@ -458,11 +463,9 @@ showHintIcon : function(pogid,pogHint)	{
 	else
 		price = " $"+P;
 	return price;
+	
 	},
-
-
-
-
+	
 renderOption: function(pog,pid) {
 	var pogid = pog.id;
 

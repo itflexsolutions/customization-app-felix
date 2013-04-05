@@ -69,6 +69,7 @@ function prod_customize() {
 		var strp = "";
 		$(".add_reflective_stripes .pogType_select select option:selected").each(function () {
 		strp += $(this).val();
+		ref_price = $(this).attr("title");
 		});
 		var str_pos = $(".add_reflective_stripes .pogType_select select option:selected").val();
 		var str_pos_txt = $(".add_reflective_stripes .pogType_select select option:selected").text();
@@ -84,7 +85,7 @@ function prod_customize() {
 			$(".add_reflective_stripes .pogType_select select option:selected").remove();
 		}
 		var current_price = $(".custom_price span").text();
-		var stripes_price=parseInt(current_price) + 2;
+		var stripes_price=parseFloat(current_price) + parseFloat(ref_price);
 		$(".custom_price span").html(stripes_price);
 		$(".selected_options_list small").unbind('click').click(function() {
 //			e.preventDefault();
@@ -96,7 +97,7 @@ function prod_customize() {
 			$(this).parent().remove();
 			$(".add_reflective_stripes .pogType_select select").append("<option value='"+ ref +"'>"+ sel_stripe +"</option>");
 			var current_price = $(".custom_price span").text();
-			var updaterefprice = parseInt(current_price)-2;
+			var updaterefprice = parseFloat(current_price) - parseFloat(ref_price);
 			$(".custom_price span").html(updaterefprice);
 			
 			});
@@ -123,8 +124,10 @@ function prod_customize() {
 				$(".add_Logo .pogType_imggrid input.img_"+img_ti).attr('checked', 'checked');
 				$(".add_Logo .pogType_imggrid img").css("border","1px solid #fff");
 				$(this).css("border","1px solid #ccc");
+				var log_price = $(this).attr("name");
 				$(".add_Logo .pogType_cb input").unbind('click').click(function(e) {
-					$(".add_Logo .pogType_text").show();												 
+					$(".add_Logo .pogType_text").show();	
+					$(".add_Logo .pogType_text input").attr({"maxlength":"10"});
 				});
 				var logoimg = $(this).attr("src");
 				var logoimga = logoimg.replace("W87-H58-BFFFFFF", "");
@@ -137,16 +140,13 @@ function prod_customize() {
 						$(".state_nm").show();
 						$(".custom_logo ul li#log_"+ logo).append("<img alt='' src='" + logoimga +"'>").append("<span class='state_nm'>" + logo_text + "</span>");;
 						$(".add_Logo .pogType_imggrid").css("display","none");
-						$(".selected_logo_options_list").append("<p id='logo_pos" + logo + "'><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><small title='"+ logo +"' name='" + logo_pos +"'>X</small></p>");
-						//$(".selected_logo_options_list span#sel_logo_opt" + logo).html(logo_pos);
+						$(".selected_logo_options_list").append("<p id='logo_pos" + logo + "'><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><br><span class='log_text'>" + logo_text + "</span><small title='"+ logo +"' name='" + logo_pos +"'>X</small></p>");
 						$(".add_Logo .pogType_select select option:selected").remove();
 						$(".add_embroidery .selcls_AA select option[value~='" + logo + "']").remove();
-						/*$(".custom_logo ul li#"+ logo).css("display","block");
-						$(".custom_logo ul li#stripnone").css("display","none");*/
 						var current_price = $(".custom_price span").text();
-						var stripes_price=parseInt(current_price) + 5.00;
+						var stripes_price=parseFloat(current_price) + parseFloat(log_price);
 						$(".custom_price span").html(stripes_price);
-						$(".custom_state_name").val('');			
+						$(".add_Logo .pogType_text input").val('');			
 						$(".add_Logo .pogType_imggrid").hide();
 						$(".add_Logo .pogType_cb").hide();
 						$(".add_Logo .logo_buts").hide();
@@ -162,7 +162,7 @@ function prod_customize() {
 							$(".add_Logo .pogType_select select").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
 							$(".add_embroidery .selcls_AA select").append("<option value='"+ loref +"'>"+ sel_logo +"</option>");
 							var lcurrent_price = $(".custom_price span").text();
-							var lupdaterefprice = parseInt(lcurrent_price)-5;
+							var lupdaterefprice = parseFloat(lcurrent_price)-parseFloat(log_price);
 							$(".custom_price span").html(lupdaterefprice);
 							$(this).parent().remove();
 					});
@@ -186,6 +186,11 @@ function prod_customize() {
 						var embroid_styl = "";
 						$(".add_embroidery .selcls_AB select option:selected").each(function () {
 							embroid_styl += $(this).val();
+							var embroid_styl_text = $(this).text();
+							$(".add_embroidery .pogType_text input").val('');
+							var embroid_styl_texta = embroid_styl_text.split('(')[1];
+							var embroid_styl_textb = embroid_styl_texta.replace("Characters)", "").replace(" ", "");
+							$(".add_embroidery .pogType_text input").attr({"maxlength":embroid_styl_textb});
 							
 						});
 						$(".add_embroidery .pogType_imgselect").show();
@@ -194,21 +199,24 @@ function prod_customize() {
 							var embroid_color = "";
 						$(".add_embroidery .pogType_imgselect select option:selected").each(function () {
 							embroid_color += $(this).val();
+							
+							
 						});
 						$(".add_embroidery .pogType_text").show();
 						$(".add_embroidery .embroid_but").show()
-						$(".add_embroidery .embroid_but button").attr("disabled", "disabled");
+						
 						$(".add_embroidery .pogType_imgselect select").css("padding-left","80px");
+						
 						var embroid_colorn = "em_" + embroid_color + "_color";
 						$(".add_embroidery .pogType_text input").focusout(function() {
 						var embroid_text = "";
 						embroid_text = $(".add_embroidery .pogType_text input").val();
-						if(embroid_text != ""){
-							$(".add_embroidery .embroid_but button").removeAttr("disabled");
-						}
+						
 						$("#embroid_ok").unbind('click').click(function(e) {
 							if(embroid !="" && embroid_color !="" && embroid_text !=""){
 								if ( $(".add_embroidery .selcls_AB select option:selected").val() == embroid_styl ) {
+									
+									var embroid_price = $(".add_embroidery .pogType_imgselect select option:selected").attr("name");
 									$(".custom_logo ul li#log_"+ embroid).append("<p class='" + embroid_styln + " " + embroid_colorn + "' title='" + embroid_styln + "_" + embroid_color + "'>"+embroid_text+"</p>");
 									var sel_embroid_opt = $(".add_embroidery .selcls_AA select option:selected").text();
 									var sel_embroid_opt_val = $(".add_embroidery .selcls_AA select option:selected").val();
@@ -218,15 +226,13 @@ function prod_customize() {
 									$(".add_embroidery .selcls_AA select option:selected").remove();
 									$(".add_Logo .selcls_AA select option[value~='" + embroid +"']").remove();
 									$(".add_embroidery .selected_embroid_options").show();
-									/*$(".custom_embroid ul li#"+ embroid).css("display","block");
-									$(".custom_embroid ul li#logonone").css("display","none");*/
 									$(".add_embroidery .pogType_text input").val('');
 									$(".add_embroidery .pogType_imgselect").hide();
 									$(".add_embroidery .selcls_AB").hide();
 									$(".add_embroidery .embroid_but").hide();
 									$(".add_embroidery .pogType_text").hide();
 									var current_price = $(".custom_price span").text();
-									var embroid_price=parseInt(current_price) + 10;
+									var embroid_price=parseFloat(current_price) + parseFloat(embroid_price);
 									$(".custom_price span").html(embroid_price);
 									$(".add_embroidery .selcls_AA select option").removeAttr("selected");
 								}
@@ -239,7 +245,7 @@ function prod_customize() {
 										$(".add_embroidery .selcls_AA select").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
 										$(".add_Logo .selcls_AA select").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
 										var ecurrent_price = $(".custom_price span").text();
-										var eupdaterefprice = parseInt(ecurrent_price)-10;
+										var eupdaterefprice = parseFloat(ecurrent_price)-parseFloat(embroid_price);
 										$(".custom_price span").html(eupdaterefprice);
 										$(this).parent().remove();
 								});

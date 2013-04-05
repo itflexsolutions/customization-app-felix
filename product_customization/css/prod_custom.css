@@ -77,7 +77,7 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 	
 	.custom_logo{position:absolute; top:0px;}
 	.front_logo{display:block; list-style:none;}
-	.custom_logo li{width:41px; height:24px; display:block; list-style:none!important; position:absolute; text-align:center; overflow-x:hidden; overflow:visible;}
+	.custom_logo li{width:41px; height:24px; display:block; list-style:none!important; position:absolute; text-align:center; overflow-x:hidden; overflow:visible; word-wrap:break-word;}
 	.front_logo #log_02{top: 38px; left: 180px;}
 	.front_logo #log_03{top: 38px; left: 250px;}
 	.front_logo #log_04{top: 90px; left: 180px; width:30px;}
