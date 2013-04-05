@@ -129,7 +129,6 @@ function prod_customize() {
 				var logoimg = $(this).attr("src");
 				var logoimga = logoimg.replace("W87-H58-BFFFFFF", "");
 				$(".logo_ok").attr("name",logoimga);
-				
 				$(".logo_ok").unbind('click').click(function(e) {
 					if ( $(".add_Logo .pogType_select select option:selected").val() == logo ) {
 						$(".selected_logo_options").css("display","block");
@@ -145,7 +144,7 @@ function prod_customize() {
 						/*$(".custom_logo ul li#"+ logo).css("display","block");
 						$(".custom_logo ul li#stripnone").css("display","none");*/
 						var current_price = $(".custom_price span").text();
-						var stripes_price=parseInt(current_price) + 5;
+						var stripes_price=parseInt(current_price) + 5.00;
 						$(".custom_price span").html(stripes_price);
 						$(".custom_state_name").val('');			
 						$(".add_Logo .pogType_imggrid").hide();
