@@ -72,7 +72,7 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 	
 	.selected_logo_options .selected_logo_options_list{}
 	.selected_logo_options p{padding:10px 0 10px 0; display:block; border-bottom:1px solid #ddd; margin:0; position:relative;}
-	.selected_logo_options p small{float:right; cursor:pointer; background:#ddd; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:0 5px; -moz-border-radius: 5px; border-radius:5px; line-height:18px; font-weight:bold; margin-right:10px;}
+	.selected_logo_options p small{float:right; cursor:pointer; background:#ddd; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:0 5px; -moz-border-radius: 5px; border-radius:5px; line-height:18px; font-weight:bold; margin-right:10px; position:absolute; right:0; top:10px;}
 	
 	
 	.custom_logo{position:absolute; top:0px;}
@@ -204,3 +204,13 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 .add_embroidery .pogType_imgselect .imageselect_image img{width:75px; height:18px;}
 
 .embroid_but{margin-top:10px;}
+
+
+.sel_opt_all{font-size:12px;}
+.sel_opt_all h3{font-size:14px; margin:10px 0;}
+.sel_opt_all label{display:block; font-weight:bold;}
+.sel_opt_all p{display:block; padding-bottom:10px;}
+.selected_logo_options_list label {
+    clear: none;
+    display: inline-block !important;
+}

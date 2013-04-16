@@ -712,6 +712,7 @@ fallback is to just output the value.
 //changes the text on the button based on certain attributes.
 //app.ext.myRIA.u.handleAddToCart($(this),{'action':'modal'});
 			addToCartButton : function($tag,data)	{
+				
 //				app.u.dump("BEGIN store_product.renderFunctions.addToCartButton");
 
 //if price is not set, item isn't purchaseable. buttonState is set to 'disabled' if item isn't purchaseable or is out of stock.
@@ -832,12 +833,14 @@ fallback is to just output the value.
 // myria.vars.session is where some user experience data is stored, such as recent searches or recently viewed items.
 // -> unshift is used in the case of 'recent' so that the 0 spot always holds the most recent and also so the length can be maintained (kept to a reasonable #).
 			showContent : function(pageType,infoObj)	{
+				
 //				app.u.dump("BEGIN showContent ["+pageType+"]."); app.u.dump(infoObj);
 /*
 what is returned. is set to true if pop/pushState NOT supported. 
 if the onclick is set to return showContent(... then it will return false for browser that support push/pop state but true
 for legacy browsers. That means old browsers will use the anchor to retain 'back' button functionality.
 */
+
 				var r = false;
 				var $old = $("#mainContentArea :visible:first"); //used for transition (actual and validation).
 //clicking to links (two product, for example) in a short period of time was rendering both pages at the same time.
@@ -845,6 +848,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 				if($old.length)	{
 					$old.siblings().hide(); //make sure only one 'page' is visible.
 					}
+					
 				app.ext.myRIA.u.closeAllModals();  //important cuz a 'showpage' could get executed via wiki in a modal window.
 
 				if(typeof infoObj != 'object')	{infoObj = {}} //could be empty for a cart or checkout
@@ -864,8 +868,11 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 //must be run before handleSandHOTW or history[0] will be this infoObj, not the last one.
 				if(!$.isEmptyObject(app.ext.myRIA.vars.hotw[0]))	{
 					app.ext.myRIA.u.handleTemplateFunctions($.extend(app.ext.myRIA.vars.hotw[0],{"state":"onDeparts"}))
-					}
 					
+
+					}
+			
+				
 				app.ext.myRIA.u.handleSandHOTW(infoObj);
 //handles the appnav. the ...data function must be run first because the display function uses params set by the function.
 				app.ext.myRIA.u.handleAppNavData(infoObj);
@@ -1037,6 +1044,7 @@ app.ext.myRIA.pageTransition($old,$('#'+infoObj.parentID));
 			bulkAddItemsToCart : function($context)	{
 				if($context)	{
 					var $inputs = $(".qtyChanged",$context);
+					
 					if($inputs.length)	{
 						$inputs.each(function(){
 							var obj = app.ext.store_product.u.buildCartItemAppendObj($(this).closest('form'));
@@ -2271,6 +2279,8 @@ elasticsearch.size = 50;
 				infoObj.templateID = 'cartTemplate';
 				infoObj.parentID = (infoObj.show == 'inline') ? 'mainContentArea_cart' : 'modalCart';
 				infoObj.state = 'onInits'; //needed for handleTemplateFunctions.
+
+
 				app.ext.myRIA.u.handleTemplateFunctions(infoObj);
 				if(infoObj.show == 'inline')	{
 //only create instance once.
@@ -2906,6 +2916,10 @@ else	{
 				app.u.dump("BEGIN myRIA.u.addItemToCart");
 				obj = obj || {'action':''}
 				if($form && $form.length)	{
+					//var a=['00','01','02','04','05'];
+					//for(var i = 0; i<5; i++)	{
+					//var cartObj = {"qty":"1","pog_A4_cb":"1","sku":"CED2","%variations":{"A2":"01","A9":"00","A0":"09","AA":"04","A1":"01","A5":"felix","AB":"03","A6":"02","A7":""}};
+					//}
 					var cartObj = app.ext.store_product.u.buildCartItemAppendObj($form);
 					if(cartObj)	{
 						if(cartObj)	{
@@ -2977,7 +2991,8 @@ else	{
 //				app.u.dump("BEGIN myRIA.u.handleTemplateFunctions");
 //				app.u.dump(infoObj);
 //in some cases, such as showContent/oninits, we may not 'know' what template is being loaded when this code is executed. try to guess.
-				if(!infoObj.templateID)	{
+
+					if(!infoObj.templateID)	{
 					var couldBeType = this.whatAmIFor(infoObj);
 //					app.u.dump(" -> no templateID specified. Try to guess...");
 //					app.u.dump(" -> couldBeType: "+couldBeType);

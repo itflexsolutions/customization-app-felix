@@ -124,6 +124,7 @@ renderOptionSELECT: function(pog) {
 
 //if the option is 'optional' AND has more than one option, add blank prompt. If required, add a please choose prompt first.
 	if(len > 0)	{
+		
 		optionTxt = (pog['optional'] == 1) ?  "Please choose" :  "Please choose (required)";
 		selOption = "<option value='' disable='disabled' selected='selected'>"+optionTxt+"<\/option>";
 		$selectList.append(selOption);

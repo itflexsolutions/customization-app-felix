@@ -20,7 +20,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130405183300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130412172300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"testURL":"http://www.9beeda.hoth.zoovy.net/" //used ONLY if protocol is file: (for testing)
@@ -718,7 +718,7 @@ this will likely become more flexible in the future. ###
 
 	</menu>
 <button id="customize_but"  style="background:#084b9a; -moz-border-radius: 5px; border-radius:5px; border:1px solid #04448e; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px; cursor:pointer; margin:10px 10px 10px 0; display:inline-block; text-decoration:none;">Customize</button>
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			 $( "#customize_but" ).click(function() {
 				$( "#prod_customize" ).dialog({
 					height: 840,
@@ -726,7 +726,7 @@ this will likely become more flexible in the future. ###
 					modal: true
 					});
 				});
-		</script>
+		</script>-->
 	</td>
 </tr>
 <tr>
@@ -798,7 +798,7 @@ It's done this way because ID's hard coded into template are bad mojo (templates
   </tr>
     <tr>
 	<td colspan="2">
-		<div id="prod_customize" style="display:none;" title="Customize ">
+		<div id="prod_customize" style="display:block;" title="Customize ">
 		<div class="custom_product_wrap">
 		<link href="product_customization/css/prod_custom.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript" src="product_customization/scripts/jquery-ui.js"></script>
@@ -901,13 +901,41 @@ It's done this way because ID's hard coded into template are bad mojo (templates
 				</div>
 				
 			</div>
+			<input type="button" class="opt_apply" value="Apply" />
 			<input type='submit' style="margin-top:10px;" value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />
 			
         </div>
     </div>	
 	
 </div>
-
+<div class="sel_opt_all" style="display:inline-block;">
+	<div class="refs_option_wrap" style="display:none;">
+		<div class="refs_option">
+			<h3>Selected Reflective Stripes</h3>
+			<div class="sel_refs_option">
+				<p><label>Reflective Stripe Style</label></p>
+				<p class="sel_refs_sty"><span></span></p>
+				<p><label>Reflective Stripe Position</label></p>
+			</div>
+		</div>
+	</div>
+	<div class="log_option_wrap" style="display:none;">
+		<div class="log_option">
+			<h3>Selected Logo</h3>
+			<div class="sel_log_option">
+			
+			</div>
+		</div>
+	</div>
+	<div class="emb_option_wrap" style="display:none;">
+		<div class="emb_option">
+			<h3>Selected Embroidered Text</h3>
+			<div class="sel_emb_option">
+			
+			</div>
+		</div>
+	</div>
+</div>
 	</td>
 </tr>
 </table>
@@ -1634,15 +1662,6 @@ used for store_crm.js
 	<div data-app-role='orderContents' class='ui-accordion-content ui-helper-reset displayNone ui-widget-content '></div>
 
 </section>
-
-
-
-
-
-
-
-
-
 <section  id='faqTopicTemplate'>
 
 	<div class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom' data-bind='var:faq(TOPIC_ID);format:assignAttribute; attribute:data-topicid;' onClick="app.ext.myRIA.a.showFAQbyTopic($(this).attr('data-topicid'));">

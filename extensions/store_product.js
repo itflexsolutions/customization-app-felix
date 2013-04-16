@@ -391,7 +391,7 @@ var ids = pogs.listOptionIDs();
 
 for ( var i=0, len=ids.length; i<len; ++i) {
 	pog = pogs.getOptionByID(ids[i]);
-	if(ids[i]!="A9" && ids[i]!="A0" && ids[i]!="AA" && ids[i]!="A1" && ids[i]!="AB" && ids[i]!="A6" && ids[i]!="A4" && ids[i]!="A5" && ids[i]!="A7"){
+	if(ids[i]!="A9" && ids[i]!="A0" && ids[i]!="AA" && ids[i]!="A1" && ids[i]!="AB" && ids[i]!="A6" && ids[i]!="A4" && ids[i]!="A5" && ids[i]!="A7" && ids[i]!="A8"){
 	
 	$display.append(pogs.renderOption(pog,pid));
 	}
@@ -490,7 +490,7 @@ var $display = $("<div \/>").attr('id','JSONPogDisplay_'+pid); //holds all the p
 pogs = new handlePogs(app.data['appProductGet|'+pid]['@variations'],{"formId":formID,"sku":pid});
 var pog;
 if(typeof pogs.xinit === 'function')	{pogs.xinit()}  //this only is needed if the class is being extended (custom sog style).
-var ids = ['AA','AB','A6','A7'];
+var ids = ['AA','AB','A6','A7','A8'];
 for ( var i=0, len=ids.length; i<len; ++i) {
 	
 	pog = pogs.getOptionByID(ids[i]);

@@ -1,4 +1,14 @@
 function prod_customize() {
+	$(".add_reflective_stripes .pogType_select select option[value~='09']").attr({"selected":"selected"});
+	$(".add_reflective_stripes .zform_select option[value~='00']").attr({"selected":"selected"});
+	$(".add_Logo .pogType_select select option[value~='02']").attr({"selected":"selected"});
+	$(".add_Logo .pogType_imggrid input.img_A1_01").attr('checked', 'checked');
+	
+	$(".add_embroidery .selcls_AB select option[value~='02']").attr({"selected":"selected"});
+	$(".add_embroidery .pogType_imgselect select option[value~='02']").attr({"selected":"selected"});
+	
+	
+	$(".add_embroidery .pogType_select select option[value~='05']").attr({"selected":"selected"});
 // Front and Back
 		$("#custom_back").unbind('click').click(function(e) {
 			  e.preventDefault();
@@ -55,6 +65,7 @@ function prod_customize() {
 				dd_val += $(this).attr("id");
 				var sel_sty = $(this).text();
 				$(".add_reflective_stripes .sel_option_sty span").html(sel_sty);
+				$(".sel_opt_all .refs_option .sel_refs_sty span").html(sel_sty);
 				$(".custom_reflective_strp ul li:visible").each(function (){
 					var strp_stl_up = $(this).attr("id");
 				var str_possa = strp_stl_up.replace("ref", "");
@@ -81,8 +92,10 @@ function prod_customize() {
 			var sel_opt = $(".add_reflective_stripes .zform_select option:selected").text();
 			var sel_opt_val = $(".add_reflective_stripes .zform_select option:selected").val();
 			$(".selected_options_list").append("<p id='sel_opt" + sel_opt_val + "'><span>" + str_pos_txt +"</span><small title='"+ str_pos +"' name='" + str_pos_txt +"'>X</small></p>");
+			$(".sel_opt_all .sel_refs_option").append("<p class='sel_ref_pos_" + str_pos + "'><span>" + str_pos_txt +"</span></p>");
 			$(".selected_options_list span#sel_opt" + sel_opt_val).html(sel_opt);
 			$(".add_reflective_stripes .pogType_select select option:selected").remove();
+			$(".refs_option_wrap").css('display','block');
 		}
 		var current_price = $(".custom_price span").text();
 		var stripes_price=parseFloat(current_price) + parseFloat(ref_price);
@@ -95,6 +108,7 @@ function prod_customize() {
 			$(".custom_reflective_strp ul li#ref"+ ref +"_f img").remove();
 			$(".custom_reflective_strp ul li#ref"+ ref +"_b img").remove();
 			$(this).parent().remove();
+			$(".sel_opt_all .sel_refs_option .sel_ref_pos_"+ref).remove();
 			$(".add_reflective_stripes .pogType_select select").append("<option value='"+ ref +"'>"+ sel_stripe +"</option>");
 			var current_price = $(".custom_price span").text();
 			var updaterefprice = parseFloat(current_price) - parseFloat(ref_price);
@@ -140,7 +154,10 @@ function prod_customize() {
 						$(".state_nm").show();
 						$(".custom_logo ul li#log_"+ logo).append("<img alt='' src='" + logoimga +"'>").append("<span class='state_nm'>" + logo_text + "</span>");;
 						$(".add_Logo .pogType_imggrid").css("display","none");
-						$(".selected_logo_options_list").append("<p id='logo_pos" + logo + "'><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><br><span class='log_text'>" + logo_text + "</span><small title='"+ logo +"' name='" + logo_pos +"'>X</small></p>");
+						$(".selected_logo_options_list").append("<p id='logo_pos" + logo + "'><label>Position</label><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><br><label>Text</label><span class='log_text'>" + logo_text + "</span><small title='"+ logo +"' name='" + logo_pos +"'>X</small></p>");
+						
+						$(".sel_opt_all .sel_log_option").append("<p class='logo_pos" + logo + "'><label>Position</label><span>" + logo_pos +"</span><span class='logo_select'><img alt='' src='" + logoimg +"'></span><br><label>Text</label><span class='log_text'>" + logo_text + "</span></p>");
+						
 						$(".add_Logo .pogType_select select option:selected").remove();
 						$(".add_embroidery .selcls_AA select option[value~='" + logo + "']").remove();
 						var current_price = $(".custom_price span").text();
@@ -152,6 +169,7 @@ function prod_customize() {
 						$(".add_Logo .logo_buts").hide();
 						$(".add_Logo .pogType_text").hide();
 						$(".add_Logo .pogType_cb input").removeAttr("checked");
+						$(".log_option_wrap").css('display','block');
 					}
 					$(".selected_logo_options_list small").unbind('click').click(function() {
 						//e.preventDefault();
@@ -222,6 +240,9 @@ function prod_customize() {
 									var sel_embroid_opt_val = $(".add_embroidery .selcls_AA select option:selected").val();
 									var embroid_color_txt = $(".add_embroidery .pogType_imgselect select option:selected").text();
 									$(".selected_embroid_options_list").append("<p id='sel_embroid_opt" + sel_embroid_opt_val + "'><span><b>Position :</b> " + sel_embroid_opt +"</span><span class='embroid_select_color'><b>Color :</b> "+ embroid_color_txt +"</span><span class='embroid_select'><b>Text :</b> " + embroid_text +"</span><small title='"+ sel_embroid_opt_val +"' name='" + sel_embroid_opt +"'>X</small></p>");
+									
+									$(".emb_option .sel_emb_option").append("<p class='sel_opt" + sel_embroid_opt_val + "'><span><b>Position :</b> " + sel_embroid_opt +"</span><span class='embroid_select_color'><b>Color :</b> "+ embroid_color_txt +"</span><span class='embroid_select'><b>Text :</b> " + embroid_text +"</span></p>");
+									
 									$(".selected_embroid_options_list span#sel_embroid_opt" + sel_embroid_opt_val).html(sel_embroid_opt);
 									$(".add_embroidery .selcls_AA select option:selected").remove();
 									$(".add_Logo .selcls_AA select option[value~='" + embroid +"']").remove();
@@ -241,7 +262,8 @@ function prod_customize() {
 									var emref = "";
 									emref = $(this).attr("title");
 									var sel_embroid = $(this).attr("name");
-										$(".custom_logo ul li#" + emref + " p").remove();
+										$(".custom_logo ul li#log_" + emref + " p").remove();
+										$(".emb_option .sel_emb_option p.sel_opt"+emref).remove();
 										$(".add_embroidery .selcls_AA select").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
 										$(".add_Logo .selcls_AA select").append("<option value='"+ emref +"'>"+ sel_embroid +"</option>");
 										var ecurrent_price = $(".custom_price span").text();
@@ -256,4 +278,9 @@ function prod_customize() {
 				});
 				}
 			});
+			$(".opt_apply").unbind('click').click(function() {
+				var em_up = $(".sel_opt_all").html();
+				$(".add_embroidery .pogType_textarea textarea").val(em_up);																	 
+			 });
+			
 }
