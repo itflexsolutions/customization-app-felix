@@ -2916,10 +2916,6 @@ else	{
 				app.u.dump("BEGIN myRIA.u.addItemToCart");
 				obj = obj || {'action':''}
 				if($form && $form.length)	{
-					//var a=['00','01','02','04','05'];
-					//for(var i = 0; i<5; i++)	{
-					//var cartObj = {"qty":"1","pog_A4_cb":"1","sku":"CED2","%variations":{"A2":"01","A9":"00","A0":"09","AA":"04","A1":"01","A5":"felix","AB":"03","A6":"02","A7":""}};
-					//}
 					var cartObj = app.ext.store_product.u.buildCartItemAppendObj($form);
 					if(cartObj)	{
 						if(cartObj)	{

@@ -2834,6 +2834,10 @@ $tmp.empty().remove();
 			
 //			app.u.dump('BEGIN view.formats.money');
 			var amount = data.bindData.isElastic ? (data.value / 100) : data.value;
+			 var amount1 = data.bindData.isElastic ? (data.value / 100) : data.value;
+                       
+                       
+            var amount= Number(amount1) + Number(100);
 			if(amount)	{
 				var r,o,sr;
 				r = app.u.formatMoney(amount,data.bindData.currencySign,'',data.bindData.hideZero);
