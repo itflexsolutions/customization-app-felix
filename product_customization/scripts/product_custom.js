@@ -1,5 +1,5 @@
 function prod_customize() {
-	$(".add_reflective_stripes .pogType_select select option[value~='09']").attr({"selected":"selected"});
+/*	$(".add_reflective_stripes .pogType_select select option[value~='09']").attr({"selected":"selected"});
 	$(".add_reflective_stripes .zform_select option[value~='00']").attr({"selected":"selected"});
 	$(".add_Logo .pogType_select select option[value~='02']").attr({"selected":"selected"});
 	$(".add_Logo .pogType_imggrid input.img_A1_01").attr('checked', 'checked');
@@ -8,7 +8,7 @@ function prod_customize() {
 	$(".add_embroidery .pogType_imgselect select option[value~='02']").attr({"selected":"selected"});
 	
 	
-	$(".add_embroidery .pogType_select select option[value~='05']").attr({"selected":"selected"});
+	$(".add_embroidery .pogType_select select option[value~='05']").attr({"selected":"selected"});*/
 // Front and Back
 		$("#custom_back").unbind('click').click(function(e) {
 			  e.preventDefault();

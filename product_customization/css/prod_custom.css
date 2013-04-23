@@ -216,4 +216,4 @@ jdghsdfjg	.custom_product_wrap{width:870px; height:670px; background:#fff; borde
 }
 
 .pogType_textarea{display:none;}
-.custom_product_wrap .addToCartButton, .opt_apply{display:none;}
+.custom_product_wrap .addToCartButton, .opt_apply{display:none;}, sel_opt_all{display:none!important;}
